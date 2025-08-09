@@ -1,6 +1,6 @@
-CFLAGS	= -o out
+CFLAGS	= -o out -Wall -Wextra -Werror
 MAIN	= a.c
-CC	= clang
+CC	= gcc
 
 all: rel r
 
@@ -17,18 +17,8 @@ d:
 mac:
 	$(CC) -dM -E $(MAIN)
 sca:
-	scan-build $(CC) $(MAIN) $(CFLAGS)
+	scan-build -v -V make rel
+	clang-tidy $(MAIN) -- -I.
 
 r:
 	./out
-
-gin:
-	rm -rf .git
-	git init
-	git add .
-	git commit -m ':)'
-	git branch -M master
-	git remote add origin git@github.com:daex3/$(name).git
-
-git:
-	git push -u origin master

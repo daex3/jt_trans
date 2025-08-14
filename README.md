@@ -5,5 +5,5 @@ Find the operation to make a jump table smaller
 make
 ./out 10009999 20009999 30009999
 ```
-\#\# Libs
+## Libs
 N\A
